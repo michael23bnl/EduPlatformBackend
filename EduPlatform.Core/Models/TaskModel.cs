@@ -26,7 +26,7 @@ namespace EduPlatform.Core.Models {
         public string RightAnswer { get; } = string.Empty;
 
         public static (bool satisfy, string response) CheckProperties(string theme, string content, List<string> answerOptions, string rightAnswer) {
-            string response = "Task's properties do satisfy the requirenments";
+            string response = "Task's properties do satisfy the requirements";
             if (string.IsNullOrEmpty(theme)) {
                 response = "Task must have a theme";
                 return (false, response);

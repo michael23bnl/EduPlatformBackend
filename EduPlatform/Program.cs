@@ -57,7 +57,7 @@ builder.Services.AddDbContext<EduPlatformDbContext>(
     });
 
 builder.Services.AddScoped<ITasksService, TasksService>();
-//builder.Services.AddScoped<IUsersService, UsersService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<ITasksRepository, TasksRepository>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();

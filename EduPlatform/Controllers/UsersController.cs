@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using EduPlatform.Core.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using EduPlatform.API.Contracts;
@@ -29,4 +29,3 @@ namespace EduPlatform.API.Controllers {
         }
     }
 }
-*/

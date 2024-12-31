@@ -26,7 +26,7 @@ namespace EduPlatform.API.Controllers {
         public async Task<ActionResult<List<TasksResponse>>> GetTasks() {
             var tasks = await _taskService.GetAllTasks();
 
-            var response = tasks.Select(t => new TasksResponse(t.Id, t.Theme, t.Content, t.AnswerOptions, t.RightAnswer));
+            var response = tasks.Select(t => new TasksResponse(t.Id, t.Theme, t.Content, t.AnswerOptions, t.RightAnswer)).ToList();
 
             return Ok(response);
         }
@@ -86,7 +86,7 @@ namespace EduPlatform.API.Controllers {
                 return NotFound("Задача не найдена");
             }
 
-            if (request.SelectedAnswer == string.Empty) {
+            if (string.IsNullOrEmpty(request.SelectedAnswer)) {
                 return BadRequest("Введите ответ");
             }
 
@@ -142,12 +142,11 @@ namespace EduPlatform.API.Controllers {
 
         [HttpGet("GetIncorrectlySolvedTasksByTheme")]
         public async Task<ActionResult<List<TasksResponse>>> GetIncorrectlySolvedTasksByTheme(string theme) {
-
             var userId = User.FindFirst("userId")!.Value;           
 
             var tasks = await _taskService.GetIncorrectlySolvedTasksByTheme(Guid.Parse(userId), theme);
 
-            var response = tasks.Select(t => new TasksResponse(t.Id, t.Theme, t.Content, t.AnswerOptions, t.RightAnswer));
+            var response = tasks.Select(t => new TasksResponse(t.Id, t.Theme, t.Content, t.AnswerOptions, t.RightAnswer)).ToList();
 
             return Ok(response);
         }
